@@ -33,11 +33,11 @@ function uintOrNaN (v) {
 }
 
 function sumForgiving (range) {
-  return range.reduce(function (a, x) { return a + (isFinite(x.value) ? x.value : 0) }, 0)
+  return range.reduce(function (a, x) { return a + (isFinite(x.satoshis) ? x.satoshis : 0) }, 0)
 }
 
 function sumOrNaN (range) {
-  return range.reduce(function (a, x) { return a + uintOrNaN(x.value) }, 0)
+  return range.reduce(function (a, x) { return a + uintOrNaN(x.satoshis) }, 0)
 }
 
 var BLANK_OUTPUT = outputBytes({})
@@ -49,7 +49,7 @@ function finalize (inputs, outputs, feeRate) {
 
   // is it worth a change output?
   if (remainderAfterExtraOutput > dustThreshold({}, feeRate)) {
-    outputs = outputs.concat({ value: remainderAfterExtraOutput })
+    outputs = outputs.concat({ satoshis: remainderAfterExtraOutput })
   }
 
   var fee = sumOrNaN(inputs) - sumOrNaN(outputs)

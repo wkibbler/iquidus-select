@@ -13,18 +13,18 @@
     "expected": {
       "inputs": [
         {
-          "value": 18000
+          "satoshis": 18000
         }
       ],
       "outputs": [
         {
-          "value": 5133
+          "satoshis": 5133
         },
         {
-          "value": 5133
+          "satoshis": 5133
         },
         {
-          "value": 5133
+          "satoshis": 5133
         }
       ],
       "fee": 2601
@@ -47,27 +47,27 @@
     "expected": {
       "inputs": [
         {
-          "value": 10000
+          "satoshis": 10000
         },
         {
-          "value": 10000
+          "satoshis": 10000
         },
         {
-          "value": 10000
+          "satoshis": 10000
         },
         {
-          "value": 10000
+          "satoshis": 10000
         },
         {
-          "value": 10000
+          "satoshis": 10000
         }
       ],
       "outputs": [
         {
-          "value": 20910
+          "satoshis": 20910
         },
         {
-          "value": 20910
+          "satoshis": 20910
         }
       ],
       "fee": 8180
@@ -87,18 +87,18 @@
     "expected": {
       "inputs": [
         {
-          "value": 10000
+          "satoshis": 10000
         },
         {
-          "value": 10000
+          "satoshis": 10000
         },
         {
-          "value": 10000
+          "satoshis": 10000
         }
       ],
       "outputs": [
         {
-          "value": 25120
+          "satoshis": 25120
         }
       ],
       "fee": 4880
@@ -115,7 +115,7 @@
     "outputs": [
       {
         "address": "foobar",
-        "value": 12000
+        "satoshis": 12000
       },
       {
         "address": "fizzbuzz"
@@ -125,26 +125,26 @@
     "expected": {
       "inputs": [
         {
-          "value": 10000
+          "satoshis": 10000
         },
         {
-          "value": 10000
+          "satoshis": 10000
         },
         {
-          "value": 10000
+          "satoshis": 10000
         }
       ],
       "outputs": [
         {
           "address": "foobar",
-          "value": 12000
+          "satoshis": 12000
         },
         {
           "address": "fizzbuzz",
-          "value": 6220
+          "satoshis": 6220
         },
         {
-          "value": 6220
+          "satoshis": 6220
         }
       ],
       "fee": 5560
@@ -188,43 +188,43 @@
     }
   },
   {
-    "description": "2 outputs, some with missing value (NaN)",
+    "description": "2 outputs, some with missing satoshis (NaN)",
     "feeRate": 11,
     "inputs": [
       20000
     ],
     "outputs": [
       {
-        "value": 4000
+        "satoshis": 4000
       },
       {}
     ],
     "expected": {
       "inputs": [
         {
-          "value": 20000
+          "satoshis": 20000
         }
       ],
       "outputs": [
         {
-          "value": 4000
+          "satoshis": 4000
         },
         {
-          "value": 13514
+          "satoshis": 13514
         }
       ],
       "fee": 2486
     }
   },
   {
-    "description": "2 outputs, some with float values (NaN)",
+    "description": "2 outputs, some with float satoshiss (NaN)",
     "feeRate": 10,
     "inputs": [
       20000
     ],
     "outputs": [
       {
-        "value": 4000.5
+        "satoshis": 4000.5
       },
       {}
     ],
@@ -233,17 +233,17 @@
     }
   },
   {
-    "description": "2 outputs, string values (NaN)",
+    "description": "2 outputs, string satoshiss (NaN)",
     "feeRate": 11,
     "inputs": [
       20000
     ],
     "outputs": [
       {
-        "value": "100"
+        "satoshis": "100"
       },
       {
-        "value": "204"
+        "satoshis": "204"
       }
     ],
     "expected": {
@@ -251,7 +251,7 @@
     }
   },
   {
-    "description": "input with float values (NaN)",
+    "description": "input with float satoshiss (NaN)",
     "feeRate": 10,
     "inputs": [
       20000.5

@@ -1,6 +1,6 @@
 var utils = require('./utils')
 
-// split utxos between each output, ignores outputs with .value defined
+// split utxos between each output, ignores outputs with .satoshis defined
 module.exports = function split (utxos, outputs, feeRate) {
   if (!isFinite(utils.uintOrNaN(feeRate))) return {}
 
@@ -14,29 +14,29 @@ module.exports = function split (utxos, outputs, feeRate) {
   if (!isFinite(remaining) || remaining < 0) return { fee: fee }
 
   var unspecified = outputs.reduce(function (a, x) {
-    return a + !isFinite(x.value)
+    return a + !isFinite(x.satoshis)
   }, 0)
 
   if (remaining === 0 && unspecified === 0) return utils.finalize(utxos, outputs, feeRate)
 
   var splitOutputsCount = outputs.reduce(function (a, x) {
-    return a + !x.value
+    return a + !x.satoshis
   }, 0)
   var splitValue = (remaining / splitOutputsCount) >>> 0
 
   // ensure every output is either user defined, or over the threshold
   if (!outputs.every(function (x) {
-    return x.value !== undefined || (splitValue > utils.dustThreshold(x, feeRate))
+    return x.satoshis !== undefined || (splitValue > utils.dustThreshold(x, feeRate))
   })) return { fee: fee }
 
   // assign splitValue to outputs not user defined
   outputs = outputs.map(function (x) {
-    if (x.value !== undefined) return x
+    if (x.satoshis !== undefined) return x
 
-    // not user defined, but still copy over any non-value fields
+    // not user defined, but still copy over any non-satoshis fields
     var y = {}
     for (var k in x) y[k] = x[k]
-    y.value = splitValue
+    y.satoshis = splitValue
     return y
   })
 

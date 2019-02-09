@@ -1,6 +1,6 @@
 var utils = require('./utils')
 
-// add inputs until we reach or surpass the target value (or deplete)
+// add inputs until we reach or surpass the target satoshis (or deplete)
 // worst-case: O(n)
 module.exports = function accumulative (utxos, outputs, feeRate) {
   if (!isFinite(utils.uintOrNaN(feeRate))) return {}
@@ -14,10 +14,10 @@ module.exports = function accumulative (utxos, outputs, feeRate) {
     var utxo = utxos[i]
     var utxoBytes = utils.inputBytes(utxo)
     var utxoFee = feeRate * utxoBytes
-    var utxoValue = utils.uintOrNaN(utxo.value)
+    var utxoValue = utils.uintOrNaN(utxo.satoshis)
 
     // skip detrimental input
-    if (utxoFee > utxo.value) {
+    if (utxoFee > utxo.satoshis) {
       if (i === utxos.length - 1) return { fee: feeRate * (bytesAccum + utxoBytes) }
       continue
     }

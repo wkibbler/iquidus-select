@@ -43,7 +43,7 @@ Simulation.generateTxos = function (n, min, max, scriptSizes) {
 
     txos.push({
       address: randomAddress(),
-      value: v,
+      satoshis: v,
       script: {
         length: s
       }
