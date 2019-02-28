@@ -1,5 +1,5 @@
 {
-  "name": "coinselect",
+  "name": "iquidus-select",
   "version": "3.1.11",
   "description": "A transaction input selection module for bitcoin.",
   "keywords": [
