@@ -2,9 +2,9 @@ var accumulative = require('./accumulative')
 var blackjack = require('./blackjack')
 var utils = require('./utils')
 
-// order by descending satoshis, minus the inputs approximate fee
+// order by descending value, minus the inputs approximate fee
 function utxoScore (x, feeRate) {
-  return x.satoshis - (feeRate * utils.inputBytes(x))
+  return x.value - (feeRate * utils.inputBytes(x))
 }
 
 module.exports = function coinSelect (utxos, outputs, feeRate) {

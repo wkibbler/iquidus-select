@@ -9,12 +9,12 @@
     "expected": {
       "inputs": [
         {
-          "satoshis": 11920
+          "value": 11920
         }
       ],
       "outputs": [
         {
-          "satoshis": 10000
+          "value": 10000
         }
       ],
       "fee": 1920
@@ -28,19 +28,19 @@
     ],
     "output": {
       "address": "woop",
-      "satoshis": 10000
+      "value": 10000
     },
     "expected": {
       "fee": 2000,
       "inputs": [
         {
-          "satoshis": 12000
+          "value": 12000
         }
       ],
       "outputs": [
         {
           "address": "woop",
-          "satoshis": 10000
+          "value": 10000
         }
       ]
     }
@@ -55,15 +55,15 @@
     "expected": {
       "inputs": [
         {
-          "satoshis": 12000
+          "value": 12000
         }
       ],
       "outputs": [
         {
-          "satoshis": 8000
+          "value": 8000
         },
         {
-          "satoshis": 1740
+          "value": 1740
         }
       ],
       "fee": 2260
@@ -79,12 +79,12 @@
       "script": {
         "length": 220
       },
-      "satoshis": 10000
+      "value": 10000
     },
     "expected": {
       "inputs": [
         {
-          "satoshis": 27000
+          "value": 27000
         }
       ],
       "outputs": [
@@ -92,13 +92,13 @@
           "script": {
             "length": 220
           },
-          "satoshis": 10000
+          "value": 10000
         },
         {
           "script": {
             "length": 220
           },
-          "satoshis": 10000
+          "value": 10000
         }
       ],
       "fee": 7000
@@ -114,21 +114,21 @@
     "expected": {
       "inputs": [
         {
-          "satoshis": 12000
+          "value": 12000
         }
       ],
       "outputs": [
         {
-          "satoshis": 2000
+          "value": 2000
         },
         {
-          "satoshis": 2000
+          "value": 2000
         },
         {
-          "satoshis": 2000
+          "value": 2000
         },
         {
-          "satoshis": 2000
+          "value": 2000
         }
       ],
       "fee": 4000
@@ -145,27 +145,27 @@
     "expected": {
       "inputs": [
         {
-          "satoshis": 3000
+          "value": 3000
         },
         {
-          "satoshis": 12000
+          "value": 12000
         }
       ],
       "outputs": [
         {
-          "satoshis": 2000
+          "value": 2000
         },
         {
-          "satoshis": 2000
+          "value": 2000
         },
         {
-          "satoshis": 2000
+          "value": 2000
         },
         {
-          "satoshis": 2000
+          "value": 2000
         },
         {
-          "satoshis": 2000
+          "value": 2000
         }
       ],
       "fee": 5000
@@ -182,27 +182,27 @@
     "expected": {
       "inputs": [
         {
-          "satoshis": 5000
+          "value": 5000
         },
         {
-          "satoshis": 10000
+          "value": 10000
         }
       ],
       "outputs": [
         {
-          "satoshis": 3000
+          "value": 3000
         },
         {
-          "satoshis": 3000
+          "value": 3000
         },
         {
-          "satoshis": 3000
+          "value": 3000
         },
         {
-          "satoshis": 3000
+          "value": 3000
         },
         {
-          "satoshis": 3000
+          "value": 3000
         }
       ],
       "fee": 0
@@ -218,18 +218,18 @@
     "expected": {
       "inputs": [
         {
-          "satoshis": 16000
+          "value": 16000
         }
       ],
       "outputs": [
         {
-          "satoshis": 6000
+          "value": 6000
         },
         {
-          "satoshis": 6000
+          "value": 6000
         },
         {
-          "satoshis": 2180
+          "value": 2180
         }
       ],
       "fee": 1820
@@ -246,24 +246,24 @@
     "expected": {
       "inputs": [
         {
-          "satoshis": 5000
+          "value": 5000
         },
         {
-          "satoshis": 10000
+          "value": 10000
         }
       ],
       "outputs": [
         {
-          "satoshis": 4000
+          "value": 4000
         },
         {
-          "satoshis": 4000
+          "value": 4000
         },
         {
-          "satoshis": 4000
+          "value": 4000
         },
         {
-          "satoshis": 3000
+          "value": 3000
         }
       ],
       "fee": 0
@@ -300,7 +300,7 @@
     }
   },
   {
-    "description": "input with float satoshiss (NaN)",
+    "description": "input with float values (NaN)",
     "feeRate": 10,
     "inputs": [
       10000.5

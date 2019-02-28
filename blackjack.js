@@ -1,6 +1,6 @@
 var utils = require('./utils')
 
-// only add inputs if they don't bust the target satoshis (aka, exact match)
+// only add inputs if they don't bust the target value (aka, exact match)
 // worst-case: O(n)
 module.exports = function blackjack (utxos, outputs, feeRate) {
   if (!isFinite(utils.uintOrNaN(feeRate))) return {}
@@ -16,9 +16,9 @@ module.exports = function blackjack (utxos, outputs, feeRate) {
     var input = utxos[i]
     var inputBytes = utils.inputBytes(input)
     var fee = feeRate * (bytesAccum + inputBytes)
-    var inputValue = utils.uintOrNaN(input.satoshis)
+    var inputValue = utils.uintOrNaN(input.value)
 
-    // would it waste satoshis?
+    // would it waste value?
     if ((inAccum + inputValue) > (outAccum + fee + threshold)) continue
 
     bytesAccum += inputBytes

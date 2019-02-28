@@ -5,9 +5,9 @@ module.exports = function broken (utxos, output, feeRate) {
   if (!isFinite(utils.uintOrNaN(feeRate))) return {}
 
   var bytesAccum = utils.transactionBytes(utxos, [])
-  var satoshis = utils.uintOrNaN(output.satoshis)
+  var value = utils.uintOrNaN(output.value)
   var inAccum = utils.sumOrNaN(utxos)
-  if (!isFinite(satoshis) ||
+  if (!isFinite(value) ||
       !isFinite(inAccum)) return { fee: feeRate * bytesAccum }
 
   var outputBytes = utils.outputBytes(output)
@@ -18,7 +18,7 @@ module.exports = function broken (utxos, output, feeRate) {
     var fee = feeRate * (bytesAccum + outputBytes)
 
     // did we bust?
-    if (inAccum < (outAccum + fee + satoshis)) {
+    if (inAccum < (outAccum + fee + value)) {
       // premature?
       if (outAccum === 0) return { fee: fee }
 
@@ -26,7 +26,7 @@ module.exports = function broken (utxos, output, feeRate) {
     }
 
     bytesAccum += outputBytes
-    outAccum += satoshis
+    outAccum += value
     outputs.push(output)
   }
 

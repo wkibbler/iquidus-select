@@ -14,36 +14,36 @@ An unspent transaction output (UTXO) selection module for bitcoin.
 Module | Algorithm | Re-orders UTXOs?
 -|-|-
 `require('coinselect')` | Blackjack, with Accumulative fallback | By Descending Value
-`require('coinselect/accumulative')` | Accumulative - accumulates inputs until the target satoshis (+fees) is reached, skipping detrimental inputs | -
-`require('coinselect/blackjack')` | Blackjack - accumulates inputs until the target satoshis (+fees) is matched, does not accumulate inputs that go over the target satoshis (within a threshold) | -
-`require('coinselect/break')` | Break - breaks the input satoshiss into equal denominations of `output` (as provided) | -
-`require('coinselect/split')` | Split - splits the input satoshiss evenly between all `outputs`, any provided `output` with `.satoshis` remains unchanged | -
+`require('coinselect/accumulative')` | Accumulative - accumulates inputs until the target value (+fees) is reached, skipping detrimental inputs | -
+`require('coinselect/blackjack')` | Blackjack - accumulates inputs until the target value (+fees) is matched, does not accumulate inputs that go over the target value (within a threshold) | -
+`require('coinselect/break')` | Break - breaks the input values into equal denominations of `output` (as provided) | -
+`require('coinselect/split')` | Split - splits the input values evenly between all `outputs`, any provided `output` with `.value` remains unchanged | -
 
 
-**Note:** Each algorithm will add a change output if the `input - output - fee` satoshis difference is over a dust threshold.
+**Note:** Each algorithm will add a change output if the `input - output - fee` value difference is over a dust threshold.
 This is calculated independently by `utils.finalize`, irrespective of the algorithm chosen, for the purposes of safety.
 
-**Pro-tip:** if you want to send-all inputs to an output address, `coinselect/split` with a partial output (`.address` defined, no `.satoshis`) can be used to send-all, while leaving an appropriate amount for the `fee`. 
+**Pro-tip:** if you want to send-all inputs to an output address, `coinselect/split` with a partial output (`.address` defined, no `.value`) can be used to send-all, while leaving an appropriate amount for the `fee`. 
 
 ## Example
 
 ``` javascript
 let coinSelect = require('coinselect')
-let feeRate = 55 // satoshis per byte
+let feeRate = 55 // value per byte
 let utxos = [
   ...,
   {
     tx_hash: '...',
     tx_ouput_n: 0,
     ...,
-    satoshis: 10000
+    value: 10000
   }
 ]
 let targets = [
   ...,
   {
     address: '1EHNa6Q4Jz2uvNExL497mE43ikXhwF6kZm',
-    satoshis: 5000
+    value: 5000
   }
 ]
 
@@ -67,7 +67,7 @@ outputs.forEach(output => {
     wallet.nextChangeAddress()
   }
 
-  txb.addOutput(output.address, output.satoshis)
+  txb.addOutput(output.address, output.value)
 })
 ```
 

@@ -1,7 +1,7 @@
-function expand (satoshiss, indices) {
+function expand (values, indices) {
   if (indices) {
-    return satoshiss.map(function (x, i) {
-      if (typeof x === 'number') return { i: i, satoshis: x }
+    return values.map(function (x, i) {
+      if (typeof x === 'number') return { i: i, value: x }
 
       var y = { i: i }
       for (var k in x) y[k] = x[k]
@@ -9,8 +9,8 @@ function expand (satoshiss, indices) {
     })
   }
 
-  return satoshiss.map(function (x, i) {
-    return typeof x === 'object' ? x : { satoshis: x }
+  return values.map(function (x, i) {
+    return typeof x === 'object' ? x : { value: x }
   })
 }
 
@@ -26,7 +26,7 @@ function testValues (t, actual, expected) {
     if (ai.i !== undefined) {
       t.equal(ai.i, ei, 'indexes match')
     } else if (typeof ei === 'number') {
-      t.equal(ai.satoshis, ei, 'satoshiss match')
+      t.equal(ai.value, ei, 'values match')
     } else {
       t.same(ai, ei, 'objects match')
     }
